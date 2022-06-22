@@ -1,37 +1,23 @@
 import './App.css';
 
-import Button from './Button.js'
 import Question from './Question.js'
-const buttonLabels = [ 'Alfa', 'Anne', 'Anton' ]
 
-//export var answer = ""
-
-const myfun = function(event){
-  console.log(event.target.innerHTML)
-  //answer = <h4>{ event.target.innerHTML }</h4>
-}
+const question ='Welcher Begriff kommt im ICAO-Buchstabieralphabet zuerst?'
+const answers = [ 'Alfa', 'Anne', 'Andy' ]
 
 function App(props) {
-  const buttons = []
-  buttonLabels.forEach(function(item){
-    buttons.push(
-      <Button label = { item } key = { item }
-              onClick = { myfun }
-      />
-    )
-  })
 
   return (
     <div className="App">
       <header className="App-header">
         <h1>Welcome to the Wiss-Quiz</h1>
         <hr/>
-        <Question question='Welcher Begriff kommt im ICAO-Buchstabieralphabet zuerst?'/>
+        <Question
+          question = { question }
+          answers = { answers }
+        />
         <hr/>
       </header>
-      <div className="button-bar">
-        { buttons }
-      </div>
     </div>
   );
 }
