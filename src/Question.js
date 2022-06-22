@@ -10,9 +10,6 @@ class Question extends React.Component {
       question: props.question,
       answers: props.answers,
     }
-    // would be needed later on
-    // this.buttonClicked = this.buttonClicked.bind(this)
-    // this.makeButton = this.makeButton.bind(this)
   }
 
   makeButton(item){
