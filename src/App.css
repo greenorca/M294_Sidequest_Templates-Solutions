@@ -38,13 +38,13 @@ hr {
   width: 100% !important;
 }
 
-.buttonbar {
+.button-bar {
   display: grid;
   grid: auto-flow / 1fr 1fr 1fr;
   padding: 10px;
 }
 
-.buttonbar button{
+.button-bar button{
   font-size: 2em;
   padding: 8px;
   margin: 4px;

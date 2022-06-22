@@ -1,7 +1,7 @@
 import './App.css';
 
 import Button from './Button.js'
-
+import Question from './Question.js'
 const buttonLabels = [ 'Alfa', 'Anne', 'Anton' ]
 
 //export var answer = ""
@@ -25,17 +25,12 @@ function App(props) {
     <div className="App">
       <header className="App-header">
         <h1>Welcome to the Wiss-Quiz</h1>
-        <hr />
-        <h2>Welcher Begriff kommt im <a href="https://de.wikipedia.org/wiki/ICAO-Alphabet">ICAO-Buchstabieralphabet</a> zuerst?</h2>
-        <img src="img/question_smiley.png" alt=""/>
-        <hr />
+        <hr/>
+        <Question question='Welcher Begriff kommt im ICAO-Buchstabieralphabet zuerst?'/>
+        <hr/>
       </header>
-      <div className="buttonbar">
+      <div className="button-bar">
         { buttons }
-      </div>
-      <hr />
-      <div className="feedbackbar">
-        { /*answer*/ }
       </div>
     </div>
   );
