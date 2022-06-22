@@ -9,10 +9,27 @@ class Question extends React.Component {
     this.state = {
       question: props.question,
       answers: props.answers,
+      correct_answer: props.correct_answer,
+      done: false,
+      feedback: ""
     }
     // would be needed later on
-    // this.buttonClicked = this.buttonClicked.bind(this)
-    // this.makeButton = this.makeButton.bind(this)
+    this.buttonClicked = this.buttonClicked.bind(this)
+    this.makeButton = this.makeButton.bind(this)
+  }
+
+  buttonClicked(event){
+    if (this.state.done === true) return;
+    this.setState({
+      done: true
+    })
+    let feedback = "Oh soo wrong"
+    if (this.state.correct_answer === event.target.innerHTML){
+      feedback ="Strike!"
+    }
+    this.setState({
+      feedback: feedback
+    })
   }
 
   makeButton(item){
@@ -20,10 +37,7 @@ class Question extends React.Component {
       <Button
         label = { item }
         key = { item } //identifies each object
-        onClick = { function(event){ //actual event handling
-          console.log(event.target.innerHTML)
-          }
-        }
+        onClick = { this.buttonClicked }
       />
     )
   }
@@ -46,6 +60,9 @@ class Question extends React.Component {
           <hr/>
           <div className="button-bar">
             { buttons }
+          </div>
+          <div className="feedback">
+            { this.state.feedback }
           </div>
       </div>
     )

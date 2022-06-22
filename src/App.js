@@ -15,6 +15,7 @@ function App(props) {
         <Question
           question = { question }
           answers = { answers }
+          correct_answer = { answers[0] }
         />
         <hr/>
       </header>
