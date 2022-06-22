@@ -10,27 +10,27 @@ class Question extends React.Component {
       question: props.question,
       answers: props.answers,
     }
-    this.buttonClicked = this.buttonClicked.bind(this)
-    this.makeButton = this.makeButton.bind(this)
-  }
-
-  buttonClicked(event){
-    console.log(event.target.innerHTML)
+    // would be needed later on
+    // this.buttonClicked = this.buttonClicked.bind(this)
+    // this.makeButton = this.makeButton.bind(this)
   }
 
   makeButton(item){
     return (
       <Button
         label = { item }
-        key = { item }
-        onClick = { this.buttonClicked }
+        key = { item } //identifies each object
+        onClick = { function(event){ //actual event handling
+          console.log(event.target.innerHTML)
+          }
+        }
       />
     )
   }
 
   render() {
     const buttons = []
-    /* foreach doesn't work here, this would be unknown */
+    /* foreach doesn't work here, 'this' would be unknown */
     for (const s in this.state.answers){
       buttons.push(
         this.makeButton(
@@ -48,10 +48,8 @@ class Question extends React.Component {
             { buttons }
           </div>
       </div>
-
     )
   }
-
 }
 
 export default Question
