@@ -1,7 +1,6 @@
 import './App.css';
 
 import Button from './Button.js'
-import Question from './Question.js'
 const buttonLabels = [ 'Alfa', 'Anne', 'Anton' ]
 
 //export var answer = ""
@@ -26,7 +25,7 @@ function App(props) {
       <header className="App-header">
         <h1>Welcome to the Wiss-Quiz</h1>
         <hr/>
-        <Question question='Welcher Begriff kommt im ICAO-Buchstabieralphabet zuerst?'/>
+        { /* hier JSQ-Question-Element einbauen */ }
         <hr/>
       </header>
       <div className="button-bar">
