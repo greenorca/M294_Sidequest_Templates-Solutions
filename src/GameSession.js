@@ -36,7 +36,7 @@ class GameSession extends React.Component{
 
     nextQuestion(){
       this.setState({
-        index: Math.min(this.state.questions.length, this.state.index+1),
+        index: this.state.index+1,
         feedback: ""
       })
     }
@@ -46,23 +46,31 @@ class GameSession extends React.Component{
       let feedback = ""
       if (this.state.feedback !== ""){
         feedback = <div className="feedback">
-          <h2>{ this.state.feedback }</h2>
+          <h4>{ this.state.feedback }</h4>
           <button onClick={ this.nextQuestion }>Next</button>
         </div>
       }
 
+      let q = ""
+      if (this.state.index < this.state.questions.length){
+        q = <Question
+        key = { this.state.index } //extrem wichtig für refresh beim weiterschalten
+        question = { this.state.questions[this.state.index].question }
+        answers = { this.state.questions[this.state.index].answers }
+        callback = { this.fetchAnswer }
+      />} else {
+        q = <div>
+          <h1>Congrats, you made it!</h1>
+          <h2>No more questions</h2>
+        </div>
+      }
       return (
         <div className="game-session">
           <div className="session-status">
             <span className="left">Question: { this.state.index+1 } / { this.state.questions.length }</span>
             <span className="right">Score: { this.state.score }</span>
           </div>
-          <Question
-            key = { this.state.index } //extrem wichtig für refresh beim weiterschalten
-            question = { this.state.questions[this.state.index].question }
-            answers = { this.state.questions[this.state.index].answers }
-            callback = { this.fetchAnswer }
-          />
+          { q }
           <div>
             { feedback }
           </div>
