@@ -1,0 +1,16 @@
+.session-status {
+  font-size: 1.5em;
+  color: #DDD;
+}
+
+.session-status+hr{
+  clear: both;
+}
+
+.left{
+  float: left;
+}
+
+.right {
+  float: right;
+}

@@ -9,9 +9,8 @@ class Question extends React.Component {
     this.state = {
       question: props.question,
       answers: props.answers,
-      correct_answer: props.correct_answer,
+      callback: props.callback,
       done: false,
-      feedback: ""
     }
     // would be needed later on
     this.buttonClicked = this.buttonClicked.bind(this)
@@ -23,13 +22,7 @@ class Question extends React.Component {
     this.setState({
       done: true
     })
-    let feedback = "Oh soo wrong"
-    if (this.state.correct_answer === event.target.innerHTML){
-      feedback ="Strike!"
-    }
-    this.setState({
-      feedback: feedback
-    })
+    this.state.callback(event.target.innerHTML)
   }
 
   makeButton(item){
@@ -60,9 +53,6 @@ class Question extends React.Component {
           <hr/>
           <div className="button-bar">
             { buttons }
-          </div>
-          <div className="feedback">
-            { this.state.feedback }
           </div>
       </div>
     )
