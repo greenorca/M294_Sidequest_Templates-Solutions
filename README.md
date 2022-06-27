@@ -1,3 +1,10 @@
+# Intro
+
+Dies ist ein Step-by-Step Repo für ein ReactJA-basiertes Frontend eines Online-Quizzes.
+
+Der schrittweise Aufbau ist in den Branches hinterlegt (inkl. Vorlage und Lösungsbranch)
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
