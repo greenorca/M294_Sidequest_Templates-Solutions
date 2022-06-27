@@ -13,40 +13,41 @@ class GameSession extends React.Component{
         score: 0,
         index: 0,
         questions: props.questions,
-        feedback: ""
+        correct: null
       }
       this.fetchAnswer = this.fetchAnswer.bind(this)
       this.nextQuestion =this.nextQuestion.bind(this)
     }
 
     fetchAnswer(answer){
-      const currentCorrectAnswer = this.state.questions[this.state.index].correct_answer
-      let feedback = "Oh soo wrong"
-      let points = 0;
-      if (currentCorrectAnswer === answer){
-        feedback ="Strike!"
-        points = 100
+      if (this.state.correct === null){
+        const currentCorrectAnswer = this.state.questions[this.state.index].correct_answer
+        let correct = false
+        let points = 0;
+        if (currentCorrectAnswer === answer){
+          correct = true
+          points = 100
+        }
+        this.setState({
+          correct: correct,
+          score: this.state.score + points
+        })
       }
-      this.setState({
-        feedback: feedback,
-        score: this.state.score + points
-      })
-
     }
 
     nextQuestion(){
       this.setState({
         index: this.state.index+1,
-        feedback: ""
+        correct: null,
       })
     }
 
     render(){
       console.log("Q-Index:" + this.state.index)
       let feedback = ""
-      if (this.state.feedback !== ""){
+      if (this.state.correct !== null){
         feedback = <div className="feedback">
-          <h4>{ this.state.feedback }</h4>
+          <h4>{ this.state.correct?"Hurra":"Ohh nein" }</h4>
           <button onClick={ this.nextQuestion }>Next</button>
         </div>
       }
@@ -67,7 +68,7 @@ class GameSession extends React.Component{
       return (
         <div className="game-session">
           <div className="session-status">
-            <span className="left">Question: { this.state.index+1 } / { this.state.questions.length }</span>
+            <span className="left">Question: { Math.min(this.state.questions.length, this.state.index+1) } / { this.state.questions.length }</span>
             <span className="right">Score: { this.state.score }</span>
           </div>
           { q }

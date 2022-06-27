@@ -10,7 +10,6 @@ class Question extends React.Component {
       question: props.question,
       answers: props.answers,
       callback: props.callback,
-      done: false,
     }
     // would be needed later on
     this.buttonClicked = this.buttonClicked.bind(this)
@@ -18,10 +17,6 @@ class Question extends React.Component {
   }
 
   buttonClicked(event){
-    if (this.state.done === true) return;
-    this.setState({
-      done: true
-    })
     this.state.callback(event.target.innerHTML)
   }
 
