@@ -24,10 +24,12 @@ class GameSession extends React.Component{
         const currentCorrectAnswer = this.state.questions[this.state.index].correct_answer
         let correct = false
         let points = 0;
-        if (currentCorrectAnswer === answer){
+        answer.target.classList.add('wrong')
+        if (currentCorrectAnswer === answer.target.innerHTML){
           correct = true
           points = 100
-        }
+          answer.target.classList.add('correct')
+        } 
         this.setState({
           correct: correct,
           score: this.state.score + points
