@@ -15,7 +15,7 @@ const questions = [
   },
   {
     question: "Der dritte Begriff im Buchstabier-Alphabet ist...",
-    answers: ["Caesar", "Charlie", "Cuplrit"],
+    answers: ["Caesar", "Charlie", "Culprit"],
     correct_answer: "Charlie",
   },
 ]
