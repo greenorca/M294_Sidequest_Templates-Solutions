@@ -11,14 +11,12 @@ const myfun = function(event){
 }
 
 function App(props) {
-  const buttons = []
-  buttonLabels.forEach(function(item){
-    buttons.push(
-      <Button label = { item } key = { item }
+  const buttons = buttonLabels.map((item)=>
+      <Button label = { item }
+              key = { item }
               onClick = { myfun }
       />
-    )
-  })
+  )
 
   return (
     <div className="App">
