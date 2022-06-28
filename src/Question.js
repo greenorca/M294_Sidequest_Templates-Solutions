@@ -9,36 +9,19 @@ class Question extends React.Component {
     this.state = {
       question: props.question,
       answers: props.answers,
+      callback: props.callback,
     }
-    // would be needed later on
-    // this.buttonClicked = this.buttonClicked.bind(this)
-    // this.makeButton = this.makeButton.bind(this)
-  }
-
-  makeButton(item){
-    return (
-      <Button
-        label = { item }
-        key = { item } //identifies each object
-        onClick = { function(event){ //actual event handling
-          console.log(event.target.innerHTML)
-          }
-        }
-      />
-    )
   }
 
   render() {
-    const buttons = []
-    /* foreach doesn't work here, 'this' would be unknown */
-    for (const s in this.state.answers){
-      buttons.push(
-        this.makeButton(
-          this.state.answers[s]
-        )
-      )
-    }
-
+    const buttons = this.state.answers.map((answer) =>
+      <Button
+        label = { answer }
+        key = { answer } //identifies each object
+        onClick = { this.state.callback }
+      />
+    )
+    
     return (
       <div className="question">
           <h2>{ this.state.question }</h2>
