@@ -18,7 +18,8 @@ class Question extends React.Component {
       <Button
         label = { answer }
         key = { answer } //identifies each object
-        onClick = { this.state.callback }
+        onClick = { function(event){
+            console.log(event.target.innerHTML) } }
       />
     )
     
