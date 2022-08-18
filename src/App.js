@@ -17,8 +17,8 @@ function App(props) {
               key = { item }
               onClick = { myfun }
       />
-    )
-  }
+  )
+  
 
   return (
     <div className="App">
